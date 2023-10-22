@@ -9,7 +9,8 @@ const initialState = {
   clearDisplay: false,
   operation: null,
   values: [0, 0],
-  current: 0
+  current: 0,
+  result: false
 }
 
 class App extends Component{
@@ -54,15 +55,10 @@ class App extends Component{
         operation: equals ? null : op,
         current: equals ? 0 : 1,
         clearDisplay: true,
-        values
-
+        values,
+        result: equals
       })
     }
-  }
-
-  result = () =>{
-    aux = eval(displayValue)
-   this.setState({displayValue: aux})
   }
 
   render = () => (
@@ -73,7 +69,7 @@ class App extends Component{
           <Text style={this.estilo.barText}>Calculadora</Text>
         </View>
         <View style={this.estilo.container}>
-          <Display value={this.state.displayValue}></Display>
+          <Display value={this.state.displayValue} result={this.state.result}></Display>
           <View style={this.estilo.buttons}>
             <Button label="AC" triple onclick={this.clearMemory}/>
             <Button label="/" op onclick={this.setOperation}/>

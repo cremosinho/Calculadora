@@ -11,13 +11,18 @@ const estilo = StyleSheet.create({
     displayValue:{
         fontSize: 60,
         color: '#fff'
+    },
+    resultSt:{
+        color: '#afa'
     }
 })
 
 export default props => {
+    estilos = props.result ? [estilo.displayValue, estilo.resultSt]  : [estilo.displayValue]
+
     return(
         <View style={estilo.display}>
-            <Text style={estilo.displayValue}
+            <Text style={estilos}
             numberOfLines={1}>{props.value}</Text>
         </View>
     )
